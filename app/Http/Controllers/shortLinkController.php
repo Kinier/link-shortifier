@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 use App\Models\Links;
 
@@ -39,9 +40,13 @@ class shortLinkController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
+        $old = $request->input('url');
+        $new = $request->input('shortedUrl');
+
+        DB::table('links')->insert(['link' => $old, 'short_link' => $new, 'user_id' => NULL]);
 
         return redirect()->action([shortLinkController::class,'created'],
-            ['old' => $request->input('url'), 'new'=> $request->input('shortedUrl')]);
+            ['old' => $old, 'new'=> $new]);
     }
 
     /**
@@ -53,6 +58,7 @@ class shortLinkController extends Controller
     {
         $new = $request->input('new');
         $old = $request->input('old');
+
         return view('created', ['new' => $new, 'old' => $old]);
     }
 
