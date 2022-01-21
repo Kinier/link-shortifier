@@ -16,10 +16,10 @@ class CreateLinksTable extends Migration
         Schema::create('links', function (Blueprint $table) {
             $table->increments('id');
             $table->string('link', 150);
-            $table->string('short_link', 150);
+            $table->string('short_link', 50)->unique();
             $table->string('user_id')->nullable();
-            $table->time('created_at');
-            $table->time('updated_at');
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrentOnUpdate()->nullable();
         });
     }
 
