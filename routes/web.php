@@ -24,4 +24,4 @@ Route::get('/create', [shortLinkController::class, 'create']);
 Route::get('/created', [shortLinkController::class, 'created']);
 Route::put('/store', [shortLinkController::class, 'store']);
 
-Route::get('/{any}', [shortLinkController::class, 'index']);
+Route::get('/{url}', [shortLinkController::class, 'redirect']);

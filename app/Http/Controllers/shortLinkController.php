@@ -56,6 +56,11 @@ class shortLinkController extends Controller
         return view('created', ['new' => $new, 'old' => $old]);
     }
 
+    public function redirect($url)
+    {
+        dd($url);
+    }
+
     /**
      * Display the specified resource.
      *
