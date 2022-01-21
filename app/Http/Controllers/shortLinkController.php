@@ -39,7 +39,21 @@ class shortLinkController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-        return redirect('/created');
+
+        return redirect()->action([shortLinkController::class,'created'],
+            ['old' => $request->input('url'), 'new'=> $request->input('shortedUrl')]);
+    }
+
+    /**
+     * Shows newly created link page
+     * @param Request $request
+     * @return View
+     */
+    public function created(Request $request) : View
+    {
+        $new = $request->input('new');
+        $old = $request->input('old');
+        return view('created', ['new' => $new, 'old' => $old]);
     }
 
     /**
