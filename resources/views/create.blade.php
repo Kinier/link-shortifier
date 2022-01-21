@@ -10,7 +10,7 @@
                     <input type="url" name="url" id="url">
                 </label>
 
-                <label>Ваша ссылОчка
+                <label>Ваша ссылОчка новая
                     <input type="url" name="shortedUrl" id="shortedUrl">
                 </label>
 

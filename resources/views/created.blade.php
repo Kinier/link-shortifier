@@ -2,6 +2,6 @@
 
 
 @section('content')
-    {{$old}}
-
+    Старая ссылка {{$old}}
+    Новая сыслка {{$new}}
 @endsection
