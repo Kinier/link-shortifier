@@ -10,10 +10,6 @@
                     <input type="url" name="url" id="url">
                 </label>
 
-                <label>Ваша ссылОчка новая
-                    <input type="url" name="shortedUrl" id="shortedUrl">
-                </label>
-
                 <button type="submit" value="YEP">Генерация ссылки</button>
 
             </form>
