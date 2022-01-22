@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use http\Url;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 use Illuminate\View\View;
 use App\Models\Links;
 
@@ -41,9 +43,15 @@ class shortLinkController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $old = $request->input('url');
-        $new = $request->input('shortedUrl');
 
-        DB::table('links')->insert(['link' => $old, 'short_link' => $new, 'user_id' => NULL]);
+
+
+
+        do{
+            $new = url('/') . '/' . Str::random(4);
+            $result = DB::table('links')->insert(['link' => $old, 'short_link' => $new, 'user_id' => NULL]);
+        }while($result == false); // todo i think this is not the best solution
+
 
         return redirect()->action([shortLinkController::class,'created'],
             ['old' => $old, 'new'=> $new]);
@@ -64,7 +72,7 @@ class shortLinkController extends Controller
 
     public function redirect($url)
     {
-        dd($url);
+
     }
 
     /**
