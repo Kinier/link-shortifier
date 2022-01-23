@@ -48,7 +48,7 @@ class shortLinkController extends Controller
 
 
         do{
-            $new = url('/') . '/' . Str::random(4);
+            $new = Str::random(4);
             $result = DB::table('links')->insert(['link' => $old, 'short_link' => $new, 'user_id' => NULL]);
         }while($result == false); // todo i think this is not the best solution
 
@@ -72,7 +72,11 @@ class shortLinkController extends Controller
 
     public function redirect($url)
     {
-
+        $url = DB::table('links')->where('short_link', '=', $url)->first(['link']);
+        if ($url !== null)
+            return redirect($url->link);
+        else
+            return abort(404); // todo create new view for the page that shows up if there is no such short link
     }
 
     /**
