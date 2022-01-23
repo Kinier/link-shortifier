@@ -10,3 +10,28 @@ input{
     border-radius: 4px;
 }
 
+.home-link{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    font-family: "Bookman Old Style", cursive ;
+}
+.created-links{
+    display:flex;
+    flex-flow: column;
+    justify-content: center;
+    align-content: center;
+}
+
+.link-info{
+    display:flex;
+    flex-flow: row;
+    text-align: center;
+
+}
+
+.links-info{
+    display:flex;
+    flex-flow: row;
+
+}
