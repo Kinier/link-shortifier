@@ -10,7 +10,20 @@ input{
     border-radius: 4px;
 }
 
-.home-link{
+
+.site-name{
+    text-align: center;
+}
+
+.btn{
+
+}
+
+.create-btn{
+
+}
+
+.home-link {
     display: flex;
     text-align: center;
     justify-content: center;
@@ -33,5 +46,4 @@ input{
 .links-info{
     display:flex;
     flex-flow: row;
-
 }
