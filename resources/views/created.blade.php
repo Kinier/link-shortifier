@@ -3,5 +3,5 @@
 
 @section('content')
     Старая ссылка {{$old}}
-    Новая сыслка {{$new}}
+    Новая сыслка {{url('/') . '/' . $new}}
 @endsection
