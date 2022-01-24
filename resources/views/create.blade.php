@@ -1,7 +1,7 @@
 @extends("layout.app")
 @section('content')
     <div class="wrapper">
-        <div class="linkForm">
+        <div class="link-form">
 
             <form action="{{url('/store')}}" method="POST">
                 @csrf
