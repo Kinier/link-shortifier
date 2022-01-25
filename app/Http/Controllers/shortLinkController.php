@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use Illuminate\View\View;
 use App\Models\Links;
+use Psr\Container\ContainerExceptionInterface;
+use Psr\Container\NotFoundExceptionInterface;
 
 
 class shortLinkController extends Controller
@@ -52,9 +54,13 @@ class shortLinkController extends Controller
             $result = DB::table('links')->insert(['link' => $old, 'short_link' => $new, 'user_id' => NULL]);
         }while($result == false); // todo i think this is not the best solution
 
+        $linkData['new'] = $new;
+        $linkData['old'] = $old;
 
-        return redirect()->action([shortLinkController::class,'created'],
-            ['old' => $old, 'new'=> $new]);
+        $request->session()->flash('linkData', $linkData); // база, фундамент я бы сказал, определенное базирование
+
+
+        return redirect()->action([shortLinkController::class,'created']);
     }
 
     /**
@@ -64,8 +70,10 @@ class shortLinkController extends Controller
      */
     public function created(Request $request) : View
     {
-        $new = $request->input('new');
-        $old = $request->input('old');
+
+        $new = session('linkData')['new'];
+        $old = session('linkData')['old'];
+
 
         return view('created', ['new' => $new, 'old' => $old]);
     }
