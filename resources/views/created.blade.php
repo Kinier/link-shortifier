@@ -13,8 +13,9 @@
             </div>
 
         </div>
-        <div class="home-link">
-            <a href="{{url('')}}">Домой</a>
-        </div>
+
+
+
+
     </div>
 @endsection

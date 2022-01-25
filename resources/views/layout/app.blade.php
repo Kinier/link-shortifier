@@ -13,6 +13,12 @@
 
 
 <body>
+<div class="home-link">
+    <div class="site-name">
+        <a href="{{url('')}}">Link shortifier</a>
+    </div>
+</div>
+
 @yield('content')
 </body>
 </html>
