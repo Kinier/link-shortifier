@@ -3,8 +3,8 @@
     <div class="wrapper">
 
 
-            <form action="{{url('/create')}}">
-                <button class="btn create-btn" type="submit">Click me</button>
+            <form class="shortify-form" action="{{url('/create')}}">
+                <button class="btn shortify-btn" type="submit">Сократить ссылку</button>
             </form>
 
     </div>
