@@ -57,6 +57,7 @@ class shortLinkController extends Controller
         $linkData['new'] = $new;
         $linkData['old'] = $old;
 
+
         $request->session()->flash('linkData', $linkData); // база, фундамент я бы сказал, определенное базирование
 
 
@@ -70,12 +71,20 @@ class shortLinkController extends Controller
      */
     public function created(Request $request) : View
     {
+        $errors = null;
 
-        $new = session('linkData')['new'];
-        $old = session('linkData')['old'];
+        // getting two flash session parameters
+        if (isset(session('linkData')['new']) || isset(session('linkData')['old'])){
+            $new = session('linkData')['new'];
+            $old = session('linkData')['old'];
+        }else{
+            $new = null;
+            $old = null;
+            $errors[] = 'session doesnt exist';
+        }
 
 
-        return view('created', ['new' => $new, 'old' => $old]);
+        return view('created', ['new' => $new, 'old' => $old, 'errors' => $errors]);
     }
 
     public function redirect($url)
