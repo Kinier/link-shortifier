@@ -44,8 +44,11 @@ class shortLinkController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-        $old = $request->input('url');
 
+        $request->validate([
+            'url' => 'required|url'
+        ]);
+        $old = $request->input('url');
 
 
 
@@ -89,7 +92,7 @@ class shortLinkController extends Controller
 
     public function redirect($url)
     {
-        $url = DB::table('links')->where('short_link', '=', $url)->first(['link']);
+        $url = DB::table('links')->where('short_link', '=', $url)->first(['*']);
         if ($url !== null)
             return redirect($url->link);
         else
