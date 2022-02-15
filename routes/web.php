@@ -30,3 +30,5 @@ Route::post('/create', [userController::class, 'index']); // create user
 Route::put('/store', [shortLinkController::class, 'store']); // to put created link in database
 
 Route::get('/{url}', [shortLinkController::class, 'redirect']); // to redirect link // SHOULD ALWAYS BE THE LAST
+
+
