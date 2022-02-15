@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use http\Env\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 
 class apiLinkController extends Controller
 {
@@ -36,23 +37,27 @@ class apiLinkController extends Controller
      *
      * NOTE: THIS WILL RETURN LINK FROM HER SHORTED ANALOG
      *
-     * @param Request $request $id identificator of shorted link
+     * @param $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Request $request) : string
+    public function show($id) : string|object
     {
-        $request->only(["id"]);
-        $request->validate([
-            "id" => "string|size:4"
-        ]);
+        $data = ['id' => $id];
 
-        $id  = $request->get('id');
+        if (Validator::make($data, ['id' => 'string|size:4'])->fails()){
+            $data['error'] = 'неправильно введен идентификатор';
+            return json_encode($data);
+        }
 
         $rs = DB::table('links')->where('short_link', '=', $id)->first(['*']);
-        if ($rs !== null)
-            return $rs->link;
-        else
-            return abort(404); // todo create new answer for the page that shows up if there is no such short link
+
+        if ($rs !== null) {
+            $data['link'] = $rs->link;
+        }
+        else{
+            $data['error'] = 'Ссылки не нашлось';
+        }
+        return json_encode($data);
     }
 
     /**

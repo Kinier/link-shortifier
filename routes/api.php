@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\apiControllers\apiLinkController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -19,4 +20,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
-Route::apiResource('/api/v1/{id}', 'apiControllers/apiLinkController');
+Route::get('/v1/{id}', [apiLinkController::class, 'show']);
