@@ -45,3 +45,8 @@ input {
   color: #1a202c;
   text-decoration: none;
 }
+
+.input-create-link {
+  border-radius: 10px;
+  border-color: burlywood;
+}

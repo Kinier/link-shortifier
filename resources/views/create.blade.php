@@ -7,10 +7,10 @@
                 @csrf
                 @method('PUT')
                 <label>Ссылка для сокращения
-                    <input type="url" name="url" id="url">
+                    <input class="input-create-link" type="url" name="url" id="url">
                 </label>
 
-                <button type="submit" value="YEP">Генерация ссылки</button>
+                <button class="btn" type="submit" value="YEP">Генерация ссылки</button>
 
             </form>
         </div>

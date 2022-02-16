@@ -6,12 +6,17 @@
         <div class="links-info">
             @if(!isset($errors))
             <div class="link-info">
-                Сокращенная ссылка {{url('/') . '/' . $new}} <!-- todo сделать проверка на эти переменные -->
+                Сокращенная ссылка <p id="shorted-link">{{url('/') . '/' . $new}}</p> <!-- todo сделать проверка на эти переменные -->
             </div>
+
+                <button class="btn" onclick="copyToBuffer('shorted-link'); return false;">Скопировать</button>
+
             <hr>
             <div class="link-info">
-                Будет перенаправлено на {{$old}}
+                Будет перенаправлено на <p id="link">{{$old}}</p>
             </div>
+                <button class="btn" onclick="copyToBuffer('link'); return false;">Скопировать</button>
+
             @else
             <p>Ошибка. Если ты обновил страницу, то вернутся на главную можно нажав на надпись сверху.
                 Если ты ничего не нажимал то возможно у тебя отключены куки в браузере. Если это так, тогда включи
