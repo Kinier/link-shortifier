@@ -2068,7 +2068,10 @@ copyToBuffer = function copyToBuffer(id) {
   navigator.clipboard.writeText(data.innerText);
 };
 
-copyToClipboard = function copyToClipboard(text) {
+copyToClipboard = function copyToClipboard(id) {
+  // guy from stackoverflow said this function is gonna work even with http. It is!
+  var text = document.getElementById(id).innerText;
+
   if (window.clipboardData && window.clipboardData.setData) {
     // Internet Explorer-specific code path to prevent textarea being shown while dialog is visible.
     return window.clipboardData.setData("Text", text);
