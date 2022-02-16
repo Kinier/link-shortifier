@@ -2068,7 +2068,7 @@ copyToBuffer = function copyToBuffer(id) {
   navigator.clipboard.writeText(data.innerText);
 };
 
-function copyToClipboard(text) {
+copyToClipboard = function copyToClipboard(text) {
   if (window.clipboardData && window.clipboardData.setData) {
     // Internet Explorer-specific code path to prevent textarea being shown while dialog is visible.
     return window.clipboardData.setData("Text", text);
@@ -2089,7 +2089,7 @@ function copyToClipboard(text) {
       document.body.removeChild(textarea);
     }
   }
-}
+};
 
 /***/ }),
 
