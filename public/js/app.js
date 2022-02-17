@@ -2078,9 +2078,9 @@ copyToClipboard = function copyToClipboard(id) {
     console.log("Все таки клипает");
     return window.clipboardData.setData("Text", text);
   } else if (document.queryCommandSupported && document.queryCommandSupported("copy")) {
-    console.log("все таки здесь клипает");
     var textarea = document.createElement("textarea");
-    textarea.textContent = text;
+    textarea.textContent = text; // какой то базированный элемент кода, зачем он нужен? ну типа оно работает, а че
+
     textarea.style.position = "fixed"; // Prevent scrolling to bottom of page in Microsoft Edge.
 
     document.body.appendChild(textarea);

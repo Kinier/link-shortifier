@@ -50,3 +50,8 @@ input {
   border-radius: 10px;
   border-color: burlywood;
 }
+
+.copy-btn {
+  background-color: antiquewhite;
+  border-color: brown;
+}
