@@ -2100,12 +2100,12 @@ window.CopyToClipboard = function (id) {
     textarea.select();
 
     try {
-      showCopyMessage(id);
       return document.execCommand("copy"); // Security exception may be thrown by some browsers.
     } catch (ex) {
       console.warn("Copy to clipboard failed.", ex);
       return prompt("Copy to clipboard: Ctrl+C, Enter", text);
     } finally {
+      showCopyMessage(id);
       document.body.removeChild(textarea);
     }
   }
