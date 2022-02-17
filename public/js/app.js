@@ -2063,6 +2063,7 @@ module.exports = {
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 copyToBuffer = function copyToBuffer(id) {
+  // https only function
   var data = document.getElementById(id); //alert(data.innerText)
 
   navigator.clipboard.writeText(data.innerText);
@@ -2074,8 +2075,10 @@ copyToClipboard = function copyToClipboard(id) {
 
   if (window.clipboardData && window.clipboardData.setData) {
     // Internet Explorer-specific code path to prevent textarea being shown while dialog is visible.
+    console.log("Все таки клипает");
     return window.clipboardData.setData("Text", text);
   } else if (document.queryCommandSupported && document.queryCommandSupported("copy")) {
+    console.log("все таки здесь клипает");
     var textarea = document.createElement("textarea");
     textarea.textContent = text;
     textarea.style.position = "fixed"; // Prevent scrolling to bottom of page in Microsoft Edge.
