@@ -42,7 +42,7 @@ class apiLinkController extends Controller
             $result = DB::table('links')->insert(['link' => $url, 'short_link' => $new, 'user_id' => "API"]);
         }while($result === false); // todo i think this is not the best solution
 
-        $data['short_url'] = url('/') . '/' . $new;
+        $data['short_url'] = url('/')  . $new;
         return json_encode($data);
     }
 
