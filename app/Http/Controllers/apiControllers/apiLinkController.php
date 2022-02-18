@@ -26,7 +26,7 @@ class apiLinkController extends Controller
      * Store a newly created resource in storage.
      *
      * @param Request $request for $url post
-     * @return false|string return false something went wrong, json object if okey
+     * @return false|string return false something went wrong, json string object with short url if okey
      */
     public function store(Request $request): bool|string
     {
@@ -42,7 +42,7 @@ class apiLinkController extends Controller
             $result = DB::table('links')->insert(['link' => $url, 'short_link' => $new, 'user_id' => "API"]);
         }while($result === false); // todo i think this is not the best solution
 
-        $data['short_url'] = url('/')  . $new;
+        $data['short_url'] = url('', [$new]);
         return json_encode($data);
     }
 
