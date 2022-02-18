@@ -20,4 +20,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
-Route::get('/v1/{id}', [apiLinkController::class, 'show']);
+Route::get('/v1/show/{id}', [apiLinkController::class, 'show']);
+Route::post('/v1/create', [apiLinkController::class, 'store']);

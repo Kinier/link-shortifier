@@ -55,7 +55,7 @@ class shortLinkController extends Controller
         do{
             $new = Str::random(4);
             $result = DB::table('links')->insert(['link' => $old, 'short_link' => $new, 'user_id' => NULL]);
-        }while($result == false); // todo i think this is not the best solution
+        }while($result === false); // todo i think this is not the best solution
 
         $linkData['new'] = $new;
         $linkData['old'] = $old;
@@ -92,6 +92,7 @@ class shortLinkController extends Controller
 
     public function redirect($url)
     {
+        // todo добавить валидацию на $url ссылку
         $url = DB::table('links')->where('short_link', '=', $url)->first(['*']);
         if ($url !== null)
             return redirect($url->link);
