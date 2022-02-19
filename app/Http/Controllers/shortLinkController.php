@@ -7,6 +7,8 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
+
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Str;
 use Illuminate\View\View;
 use App\Models\Links;
@@ -52,8 +54,17 @@ class shortLinkController extends Controller
 
 
 
+
+
+
         do{
             $new = Str::random(4);
+
+                if ($new === 'home'){
+                    $result = false;
+                    continue;
+                }
+
             $result = DB::table('links')->insert(['link' => $old, 'short_link' => $new, 'user_id' => NULL]);
         }while($result === false); // todo i think this is not the best solution
 
