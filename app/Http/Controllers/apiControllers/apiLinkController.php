@@ -11,16 +11,6 @@ use Illuminate\Support\Str;
 
 class apiLinkController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
 
     /**
      * Store a newly created resource in storage.
@@ -39,6 +29,10 @@ class apiLinkController extends Controller
 
         do{
             $new = Str::random(4);
+            if ($new === 'home'){
+                $result = false;
+                continue;
+            }
             $result = DB::table('links')->insert(['link' => $url, 'short_link' => $new, 'user_id' => "API"]);
         }while($result === false); // todo i think this is not the best solution
 
@@ -66,7 +60,7 @@ class apiLinkController extends Controller
         $rs = DB::table('links')->where('short_link', '=', $id)->first(['*']);
 
         if ($rs !== null) {
-            $data['link'] = $rs->link;
+            $data['url'] = $rs->link;
         }
         else{
             $data['error'] = 'could\'nt find the identificator link';
