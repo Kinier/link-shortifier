@@ -2,18 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use http\Url;
+
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
 
-use Illuminate\Support\Facades\Route;
+
 use Illuminate\Support\Str;
 use Illuminate\View\View;
-use App\Models\Links;
-use Psr\Container\ContainerExceptionInterface;
-use Psr\Container\NotFoundExceptionInterface;
+
 
 
 class shortLinkController extends Controller
@@ -66,7 +64,7 @@ class shortLinkController extends Controller
                 }
 
             $result = DB::table('links')->insert(['link' => $old, 'short_link' => $new, 'user_id' => NULL]);
-        }while($result === false); // todo i think this is not the best solution
+        }while($result === false); // todo i think this is not the best solution сделать транзакцией мб
 
         $linkData['new'] = $new;
         $linkData['old'] = $old;
@@ -104,6 +102,8 @@ class shortLinkController extends Controller
     public function redirect($url)
     {
         // todo добавить валидацию на $url ссылку
+
+
         $url = DB::table('links')->where('short_link', '=', $url)->first(['*']);
         if ($url !== null)
             return redirect($url->link);
