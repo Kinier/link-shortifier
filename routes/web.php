@@ -21,8 +21,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return redirect('/home');
 });
-Route::get('/home', [shortLinkController::class, 'index']); // main page todo СРОЧНО СДЕЛАТЬ ПРОВЕРКУ НА РОУТЫ В РЕДИРЕКТ ФУНКЦИИ
-Route::get('/create', [shortLinkController::class, 'create']); // show create link form FIXME почему я через гет это сделал
+Route::get('/home', [shortLinkController::class, 'index']); // main page
+Route::get('/create', [shortLinkController::class, 'create']); // show create link form
 Route::get('/created', [shortLinkController::class, 'created']); // show created link
 Route::put('/store', [shortLinkController::class, 'store']); // to put created link in database
 
