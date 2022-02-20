@@ -55,7 +55,7 @@ input {
   color: brown;
 }
 
-.copy-btn:hover {
+.btn:hover {
   background-color: antiquewhite;
   border: double brown;
 }
