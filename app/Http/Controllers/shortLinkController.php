@@ -46,7 +46,7 @@ class shortLinkController extends Controller
     {
 
         $request->validate([
-            'url' => 'required|url'
+            'url' => 'required|url|max:500'
         ]);
         $old = $request->input('url');
 

@@ -49,6 +49,7 @@ input {
 .input-create-link {
   border-radius: 10px;
   border-color: burlywood;
+  width: 250px;
 }
 
 .copy-btn {

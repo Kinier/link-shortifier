@@ -21,8 +21,8 @@ class apiLinkController extends Controller
     {
         $url = $request->post('url');
         $data = ['url' => $url];
-        if (Validator::make($data, ['url' => 'required|url'])->fails()){ // todo думаю перенести проверки в middleware
-            $data['error'] = 'seems this is not valid url'; // todo проверку на существование сделать
+        if (Validator::make($data, ['url' => 'required|url|max:500'])->fails()){ // todo думаю перенести проверки в middleware
+            $data['error'] = 'seems this is not valid url or size is too big'; // todo проверку на существование сделать
             return json_encode($data);
         }
 
